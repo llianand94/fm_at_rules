@@ -1,0 +1,6 @@
+/* подключать каждое начертание шрифтов!!  */
+@font-face {
+  font-family: fa;
+  src: url(./../fonts/Montserrat/Montserrat-Black.ttf);
+  font-weight: 500;
+}
