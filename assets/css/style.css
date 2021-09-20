@@ -1,13 +1,19 @@
 :root{
   --black-color: #222;
   --text-color: #757474;
-  
-  --attention-color:#deda4f;
+  --circle-size: 60px;
+  --attention-color:#ebd660;
   --font-family: Arial, sans-serif;
+  --border-radius: 8px;
+  --big-font: 1.8rem;
   font-size: 16px;
 }
+body{
+  background-color: #ddd;
+}
 .usersList{
- min-height: 200vh;
+ min-height: 100vh;
+ 
 }
 .userCard{
   display: flex;
@@ -17,57 +23,66 @@
   max-width: 600px;
   margin: 0 auto;
   flex: nowrap;
-  border: 2px solid grey ;
-  border-radius: 4%;
+  border: 1px solid #ddd ;
+  border-radius: calc(var(--border-radius) + 2px);
   font-family: var(--font-family);
-  box-shadow: 0px 2px 10px var(--text-color);
+  background-color: white;
+  box-shadow: 0px 1px 10px var(--text-color);
+
   
 }
 .userCard:after{
   content: "+";
+  width: var(--circle-size);
+  height: var(--circle-size); 
   display: inline-block;
   position: absolute;
   top: calc(50% - 25px);
-  right: -4%;
-  width: 45px;
-  height: 45px;  
-  line-height: 45px;
-  font-size: 2rem;
-  font-weight: 200;
-  text-align: center;
+  right: -5%;
+
   border-radius: 50%;
-  background-color: var(--attention-color);
-  
+  line-height: var(--circle-size);
+  font-size: var(--big-font);
+  font-weight: 200;
+  text-align: center;  
+  background-color: var(--attention-color);    
 }
 .imageWrapper{
   width: 40%;
-  
+     
 }
 .photo{
   width: 100%;
   height: 100%;
-  object-fit:cover
-  border-radius: inherit;
+  
+  object-fit: cover;
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+    
 }
 .userInfo{
-margin: auto ;
-margin-left: 10%;
-color: var(--text-color)
-/* text-align: center; */
+  margin: auto ;
+  margin-left: 10%;
+  color: var(--text-color)
+  
 }
 .personalInfo{
- margin-bottom: 20%;
+  
+}
+.personalInfo > *:last-child, .status > *:last-child{
+  padding-top: var(--border-radius);
 }
 .userName{
-  font-size: 1.8rem;
   color: var(--black-color);
 }
 .statusContainer{
+  
+  margin-top: 25%;
   display: flex;
   justify-content: space-between;
 }
 
-.status{
+.status{  
   display: flex;
   margin-top: auto;
   flex-direction: column;
@@ -77,12 +92,11 @@ a{
   text-decoration: none ;
   color: inherit;
 }
-span{}
+
 
 @media (max-width: 550px){
-  .userCard{
-    
-    flex-direction: column;
+  .userCard{    
+    flex-direction: column;    
   }
   .userCard:after{
     display: none;
@@ -92,7 +106,14 @@ span{}
   }
   .userInfo{
     margin: 0;
-    padding: 1em;
+    padding: 2em;
+  }
+  .personalInfo{
+    text-align: center;
+  }
+  .statusContainer{
+    justify-content: space-around;
+    margin-top: 5%;    
   }
 }
 
@@ -106,3 +127,9 @@ span{}
   xl: >=1200px, [1200, 1400) desktop
   xxl: >=400px [1400, ] - desktop large
 ); */
+.capitalize{
+  text-transform: capitalize;
+}
+.change-font{ 
+  font-size: var(--big-font);
+}
