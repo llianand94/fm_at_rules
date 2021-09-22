@@ -1,16 +1,18 @@
 :root{
   --black-color: #222;
   --text-color: #acacac;
-  --circle-size: 60px;
-  --attention-color:#ebd660;
-  --font-family: Arial, sans-serif;
+  --attention-color: rgb(218, 218, 63);
+  --circle-size: 60px;  
   --border-radius: 8px;
+  --font-size: 16px;
   --big-font: 1.8rem;
-  font-size: 16px;
-  /* font-weight: 300; */
+  
 }
 body{
   background-color: #ddd;
+  font-family: Arial, sans-serif;
+  font-size: var(--font-size);
+  font-weight: 100;
 }
 .usersList{
  min-height: 100vh;
@@ -28,33 +30,22 @@ body{
   min-width: 500px;
   width: 90%;
   max-width: 700px;
-  margin: 0 auto;
-  
+  margin: 0 auto; 
   
   border: 1px solid #ddd ;
-  border-radius: calc(var(--border-radius) + 2px);
-  font-family: var(--font-family);
+  border-radius: calc(var(--border-radius) + 2px);  
   background-color: white;
-  box-shadow: 0px 1px 10px var(--text-color);
-  
+  box-shadow: 0px 1px 10px var(--text-color);  
+}
+.userCard::after{
+  content: "";
+  width: 90%;
+  position: absolute;
+  top: -15px;
+  right: 0;
+  left: 0;
 }
 
-.userCard:after{
-  content: "+";
-  width: var(--circle-size);
-  height: var(--circle-size); 
-  display: inline-block;
-  position: absolute;
-  top: calc(50% - 25px);
-  right: calc(var(--circle-size) / (-2));
-  opacity: 85%;
-  border-radius: 50%;
-  line-height: var(--circle-size);
-  font-size: var(--big-font);
-  font-weight: 200;
-  text-align: center;  
-  background-color: var(--attention-color);    
-}
 .userCard::before{
   content: "pro";
   display: inline-block;
@@ -90,10 +81,29 @@ body{
   color: var(--text-color)
   
 }
-
+.personalInfo{
+  
+}
 .personalInfo > *:last-child,
       .status > *:last-child{
   padding-top: var(--border-radius);
+}
+.personalInfo:after{
+  content: "+";
+  width: var(--circle-size);
+  height: var(--circle-size); 
+  display: inline-block;
+  position: absolute;
+  top: calc(50% - 25px);
+  right: calc(var(--circle-size) / (-2));
+  opacity: 85%;
+  border-radius: 50%;
+  line-height: var(--circle-size);
+  font-size: var(--big-font);
+  font-weight: 200;
+  color: var(--black-color);
+  text-align: center;  
+  background-color: var(--attention-color);    
 }
 .userName{
   color: var(--black-color);
@@ -128,11 +138,12 @@ a{
     min-width: 250px;
     flex-direction: column;    
   }
-  .userCard:after{
-    display: none;
-  }
+  
   .userCard::before{    
     display: none;     
+  }
+  .personalInfo:after{
+    display: none;
   }
   .imageWrapper{
     width: 100%;
