@@ -5,14 +5,17 @@
   --circle-size: 60px;  
   --border-radius: 8px;
   --font-size: 16px;
-  --big-font: 1.8rem;
-  
+  --big-font: 1.8rem;  
 }
 body{
   background-color: #ddd;
   font-family: Arial, sans-serif;
   font-size: var(--font-size);
   font-weight: 100;
+}
+a{
+  text-decoration: none ;
+  color: inherit;
 }
 .usersList{
  min-height: 100vh;
@@ -40,13 +43,61 @@ body{
 .userCard::after{
   content: "";
   width: 90%;
+  height: 10%;
   position: absolute;
-  top: -15px;
-  right: 0;
-  left: 0;
+  background-color: #fefefe;
+  top: -0.2rem;
+  left: 5%;
+  
+  transform: scaleY(1.1) translateY(-1rem);
+  z-index: -1;
+
+  border: 1px solid #ddd ;
+  border-radius: calc(var(--border-radius) + 2px);  
+  background-color: rgb(240, 240, 240);
+  box-shadow: 0px 1px 10px var(--text-color);
+}
+.userCard::before{
+  content: "";
+  width: 80%;
+  height: 10%;
+  position: absolute;
+  background-color: #fefefe;
+  top: -1.3rem;
+  left: 10%;
+  
+  transform: scaleY(1.1) translateY(-1rem);
+  z-index: -1;
+
+  border: 1px solid #ddd ;
+  border-radius: calc(var(--border-radius) + 2px);  
+  background-color: rgb(226, 226, 226);
+  box-shadow: 0px 1px 10px var(--text-color);
 }
 
-.userCard::before{
+.imageWrapper{
+  width: 40%;    
+}
+.photo{
+  width: 100%;
+  height: 100%;  
+  object-fit: cover;
+  object-position: bottom;  
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);    
+}
+
+.userInfo{
+  margin: auto ;
+  color: var(--text-color)  
+}
+
+.personalInfo > *:last-child,
+      .status > *:last-child{
+  padding-top: var(--border-radius);
+}
+
+.personalInfo::before{
   content: "pro";
   display: inline-block;
   width: 3rem;
@@ -64,30 +115,7 @@ body{
   color: #fefefe;
   background-color: var(--text-color);    
 }
-.imageWrapper{
-  width: 40%;     
-}
-.photo{
-  width: 100%;
-  height: 100%;  
-  object-fit: cover;
-  object-position: bottom;  
-  border-top-left-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
-    
-}
-.userInfo{
-  margin: auto ;
-  color: var(--text-color)
-  
-}
-.personalInfo{
-  
-}
-.personalInfo > *:last-child,
-      .status > *:last-child{
-  padding-top: var(--border-radius);
-}
+
 .personalInfo:after{
   content: "+";
   width: var(--circle-size);
@@ -97,19 +125,19 @@ body{
   top: calc(50% - 25px);
   right: calc(var(--circle-size) / (-2));
   opacity: 85%;
+  
   border-radius: 50%;
   line-height: var(--circle-size);
   font-size: var(--big-font);
-  font-weight: 200;
-  color: var(--black-color);
+  font-weight: 200;  
   text-align: center;  
+  color: var(--black-color);
   background-color: var(--attention-color);    
 }
 .userName{
   color: var(--black-color);
 }
-.statusContainer{
-  
+.statusContainer{  
   margin-top: 25%;
   display: flex;
   justify-content: space-between;
@@ -121,30 +149,32 @@ body{
   flex-direction: column;
   justify-content: space-between;
 }
-a{
-  text-decoration: none ;
-  color: inherit;
+
+/* specific classes */
+.capitalize{
+  text-transform: capitalize;
 }
+.change-font{ 
+  font-size: var(--big-font);
+}
+/*  */
 
-
-@media (max-width: 550px){
+@media screen and (max-width: 550px){
   .usersList{
-    /* min-height: 40vh;
-    height: 70%; */
-    padding-top: 0;
-    
+    padding-top: 0;    
    }
   .userCard{   
     min-width: 250px;
     flex-direction: column;    
   }
   
-  .userCard::before{    
+  .userCard::after,
+  .userCard::before,
+  .personalInfo:after,
+  .personalInfo:before{    
     display: none;     
   }
-  .personalInfo:after{
-    display: none;
-  }
+  
   .imageWrapper{
     width: 100%;
   }
@@ -166,18 +196,3 @@ a{
 }
 
 
-
-/* $grid-breakpoints: (
-  xs: 0, <576px [320, 576) -small smartphones
-  sm: >=576px, [576, 768) -smartphones 
-  md: >=768px, [768, 992) -tablets 
-  lg: >=992px, [992, 1200) desktop laptop, 
-  xl: >=1200px, [1200, 1400) desktop
-  xxl: >=400px [1400, ] - desktop large
-); */
-.capitalize{
-  text-transform: capitalize;
-}
-.change-font{ 
-  font-size: var(--big-font);
-}
